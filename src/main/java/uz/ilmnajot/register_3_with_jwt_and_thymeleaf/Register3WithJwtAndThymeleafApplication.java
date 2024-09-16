@@ -10,4 +10,6 @@ public class Register3WithJwtAndThymeleafApplication {
         SpringApplication.run(Register3WithJwtAndThymeleafApplication.class, args);
     }
 
+
+
 }
