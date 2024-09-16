@@ -18,7 +18,7 @@ import java.util.function.Function;
 public class JWTServiceImpl implements JWTService {
 
 
-    private String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails userDetails){
 
        return Jwts
                 .builder()
@@ -29,12 +29,12 @@ public class JWTServiceImpl implements JWTService {
                 .compact();
     }
 
-    private <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    private Claims extractAllClaims(String token) {
+    public Claims extractAllClaims(String token) {
             return Jwts
                     .parser()
                     .setSigningKey(getSigningKey())
@@ -43,12 +43,12 @@ public class JWTServiceImpl implements JWTService {
                     .getBody();
     }
 
-    private Key getSigningKey() {
+    public Key getSigningKey() {
         byte [] keyBytes = Decoders.BASE64.decode("qwertyuioasdfghjkzxcvbnm");
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    private String extractUsername(String token){
+    public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
     }
 
