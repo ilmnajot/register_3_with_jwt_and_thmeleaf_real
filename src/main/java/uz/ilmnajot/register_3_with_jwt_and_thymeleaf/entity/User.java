@@ -5,10 +5,11 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import uz.ilmnajot.register_3_with_jwt_and_thymeleaf.enums.Role;
+import uz.ilmnajot.register_3_with_jwt_and_thymeleaf.enums.Authority;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,12 +33,18 @@ public class User implements UserDetails {
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private Role role;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        List<Authority> authorities = role.getAuthorities();
+       return authorities
+               .stream()
+               .map(authority -> new SimpleGrantedAuthority(authority.name()))
+               .toList();
     }
 
     @Override
@@ -69,4 +76,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

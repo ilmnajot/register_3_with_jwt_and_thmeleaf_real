@@ -6,7 +6,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import uz.ilmnajot.register_3_with_jwt_and_thymeleaf.service.JWTService;
 
@@ -56,7 +55,7 @@ public class JWTServiceImpl implements JWTService {
     }
 
     public Key getSigningKey() {
-        byte [] keyBytes = Decoders.BASE64.decode("qwertyuioasdfghjkzxcvbnmSLKGHALDKGVBAWLKGHVBASLKBGASKG123");
+        byte [] keyBytes = Decoders.BASE64.decode("MySecretKeyIsHereToEncodeYalkefhlsakjgnlksvbkjhdjksahdjkasvbkajsf");
         return Keys.hmacShaKeyFor(keyBytes);
     }
 

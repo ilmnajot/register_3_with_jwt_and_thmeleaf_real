@@ -1,0 +1,16 @@
+package uz.ilmnajot.register_3_with_jwt_and_thymeleaf.enums;
+
+public enum EducationStatus {
+
+    PRIMARY_SCHOOL_ONLY,
+    HIGH_SCHOOL_NO_DEGREE,
+    HIGH_SCHOOL_WITH_DEGREE,
+    VOCATION_DEGREE,
+    SOME_UNIVERSITY_COURSE,
+    UNIVERSITY_DEGREE,
+    SOME_GRADUATE_LEVEL_COURSE,
+    MASTERS_DEGREE,
+    SOME_DOCTORATE_LEVEL_COURSE,
+    DOCTORS_DEGREE,
+
+}
